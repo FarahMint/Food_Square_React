@@ -1,33 +1,121 @@
-.App {
+.container {
+  width: 100vw;
+  min-height: calc(100vh - 70px);
+  /* height: 100vh; */
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  /* grid-column-gap: 0.5rem; */
+  /* margin: 0 auto; */
+
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+nav {
+  position: fixed;
+  width: 100vw;
+  z-index: 1000;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.header-logo {
+  padding: 1rem;
+  background-color: rgb(63, 13, 199);
+  color: #fefefe;
+  text-align: left;
+  font-size: 2rem;
+}
+#map {
+  width: 100%;
+  height: 100%;
+  /* margin-top: 8rem; */
+}
+
+.container-venues {
+  display: grid;
+  grid-template-columns: 1fr;
+  margin-top: 5rem;
+}
+/*  DISPLAY VENUES */
+.container-item {
+  width: 100%;
+  height: 100vh;
+  direction: rtl;
+  overflow-y: scroll;
+  overflow-x: hidden;
   display: flex;
   flex-direction: column;
+  /* justify-content: center; */
   align-items: center;
+}
+.container-item ul {
+  padding: 0;
+}
+input {
+  width: 100%;
+  padding: 1rem;
+  outline: none;
+  border: 1px solid grey;
+}
+
+.venue__item {
+  width: 90%;
+  padding: 0.5rem;
+  list-style: none;
+  font-size: 1rem;
+  margin-top: 1rem;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+  background-color: rgb(63, 13, 199);
+  color: #fefefe;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.venue__item:hover {
+  background-color: rgb(13, 187, 199);
+}
+.info_box {
+  color: rgb(13, 187, 199);
+}
+.icon {
+  order: 1;
+}
+.icon-w {
+  background-color: rgb(63, 13, 199);
+}
+
+/*  DISPLAY MAP */
+/* .container-map {
+} */
+
+footer {
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
+  align-items: center;
+  background-color: black;
+  width: 100%;
+  height: 70px;
+  overflow: hidden;
 
-.App-link {
-  color: #61dafb;
+  text-align: center;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+footer a {
+  text-decoration: none;
+  color: #fefefe;
+  text-align: center;
+}
+@media only screen and (max-width: 650px) {
+  .container {
+    grid-template-columns: 1fr 2fr;
   }
-  to {
-    transform: rotate(360deg);
+
+  .icon {
+    display: none;
+  }
+
+  .venue__item {
+    width: 90%;
+    padding: 0.25 1rem;
+    list-style: none;
+    margin-top: 0.25rem;
+    direction: initial;
   }
 }
