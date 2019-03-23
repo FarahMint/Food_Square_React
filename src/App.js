@@ -5,8 +5,8 @@ import Venues from "./components/Venues";
 import "./App.css";
 
 const API_KEY = `${process.env.REACT_APP_API_KEY}`;
-const client_id = `${process.env.REACT_APP_CLIENT_ID}`;
-const client_secret = `${process.env.REACT_APP_CLIENT_SECRET}`;
+const CLIENT_ID = `${process.env.REACT_APP_CLIENT_ID}`;
+const CLIENT_SECRET = `${process.env.REACT_APP_CLIENT_SECRET}`;
 
 class App extends Component {
   state = {
@@ -23,8 +23,8 @@ class App extends Component {
     const url = `https://api.foursquare.com/v2/venues/explore?`;
 
     const param = {
-      client_id: client_id,
-      client_secret: client_secret,
+      client_id: CLIENT_ID,
+      client_secret: CLIENT_SECRET,
       near: `Edinburgh`,
       query: `food`,
       v: `20190322`
