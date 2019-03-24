@@ -8,10 +8,6 @@ const API_KEY = process.env.REACT_APP_API_KEY;
 const CLIENT_ID = process.env.REACT_APP_CLIENT_ID;
 const CLIENT_SECRET = process.env.REACT_APP_CLIENT_SECRET;
 
-console.log(API_KEY);
-console.log(CLIENT_ID);
-console.log(CLIENT_SECRET);
-
 class App extends Component {
   state = {
     venues: [],
@@ -33,10 +29,7 @@ class App extends Component {
       query: `food`,
       v: `20190322`
     };
-
-    console.log(CLIENT_ID);
-    console.log(CLIENT_SECRET);
-
+    console.log(param);
     fetch(`${url}${new URLSearchParams(param)}`)
       .then(response => response.json())
       .then(data => {
@@ -58,7 +51,6 @@ class App extends Component {
     loadScript(
       `https://maps.googleapis.com/maps/api/js?key=${API_KEY}&callback=initMap`
     );
-    console.log(API_KEY);
     //Initialize initMap => for JS to render the init map
     //To keep it visible we convert it to the window obj
     window.initMap = this.initMap;
