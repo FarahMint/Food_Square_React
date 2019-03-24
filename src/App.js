@@ -29,7 +29,7 @@ class App extends Component {
       query: `food`,
       v: `20190322`
     };
-    console.log(param);
+
     fetch(`${url}${new URLSearchParams(param)}`)
       .then(response => response.json())
       .then(data => {
