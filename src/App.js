@@ -4,9 +4,9 @@ import { loadScript, handle_icon } from "./utils";
 import Venues from "./components/Venues";
 import "./App.css";
 
-const API_KEY = process.env.REACT_APP_API_KEY;
-const CLIENT_ID = process.env.REACT_APP_CLIENT_ID;
-const CLIENT_SECRET = process.env.REACT_APP_CLIENT_SECRET;
+const REACT_APP_API_KEY = process.env.REACT_APP_API_KEY;
+const REACT_APP_CLIENT_ID = process.env.REACT_APP_CLIENT_ID;
+const REACT_APP_CLIENT_SECRET = process.env.REACT_APP_CLIENT_SECRET;
 
 class App extends Component {
   state = {
@@ -23,8 +23,8 @@ class App extends Component {
     const url = `https://api.foursquare.com/v2/venues/explore?`;
 
     const param = {
-      client_id: CLIENT_ID,
-      client_secret: CLIENT_SECRET,
+      client_id: REACT_APP_CLIENT_ID,
+      client_secret: REACT_APP_CLIENT_SECRET,
       near: `Edinburgh`,
       query: `food`,
       v: `20190322`
@@ -49,7 +49,7 @@ class App extends Component {
 
   loadMap = () => {
     loadScript(
-      `https://maps.googleapis.com/maps/api/js?key=${API_KEY}&callback=initMap`
+      `https://maps.googleapis.com/maps/api/js?key=${REACT_APP_API_KEY}&callback=initMap`
     );
     //Initialize initMap => for JS to render the init map
     //To keep it visible we convert it to the window obj
