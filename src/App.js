@@ -8,6 +8,10 @@ const REACT_APP_API_KEY = process.env.REACT_APP_API_KEY;
 const REACT_APP_CLIENT_ID = process.env.REACT_APP_CLIENT_ID;
 const REACT_APP_CLIENT_SECRET = process.env.REACT_APP_CLIENT_SECRET;
 
+
+
+ 
+
 class App extends Component {
   state = {
     venues: [],
@@ -29,6 +33,9 @@ class App extends Component {
       query: `food`,
       v: `20190322`
     };
+
+
+
 
     fetch(`${url}${new URLSearchParams(param)}`)
       .then(response => response.json())
@@ -56,6 +63,11 @@ class App extends Component {
     window.initMap = this.initMap;
   };
 
+ 
+
+
+
+
   initMap = () => {
     // GET DATA FROM STATE
     // const { list } = this.props;
@@ -64,12 +76,17 @@ class App extends Component {
     //For the browser access google -> window
     const map = new window.google.maps.Map(document.getElementById("map"), {
       center: center,
-      zoom: 8
+      zoom: 13
     });
     this.map = map;
 
     // CREATE AN INFO WINDOW
-    const infowindow = new window.google.maps.InfoWindow({});
+
+   const infowindow = new window.google.maps.InfoWindow({
+    maxWidth: 500,
+    content:'<div id="info__window-map"></div>'
+      });
+    // const infowindow = new window.google.maps.InfoWindow({});
     this.infowindow = infowindow;
 
     this.state.venues.map(({ venue }) => {
@@ -120,7 +137,7 @@ class App extends Component {
         marker.setAnimation(window.google.maps.Animation.BOUNCE);
         setTimeout(() => {
           marker.setAnimation(null);
-        }, 1500);
+        }, 2000);
       });
 
       marker.addListener("mouseout", () => {
@@ -162,27 +179,6 @@ class App extends Component {
   handleClickList = venue => {
     let venue_flag = this.state.markers.find(marker => marker.id === venue.id);
 
-    // this.infowindow.setContent(venue_flag.details);
-    //  this.state.activeMarker
-    //   ? this.infowindow.open(this.map, item_flag)
-    //   : this.closeWindow();
-    // if (this.state.activeMarker) {
-    //   this.infowindow.open(this.map, item_flag);
-    //   this.map.setZoom(15);
-
-    //   //Animate marker
-    //   item_flag.setAnimation(window.google.maps.Animation.BOUNCE);
-    //   setTimeout(() => {
-    //     item_flag.setAnimation(null);
-    //   }, 1500);
-
-    //   this.setState(() => ({
-    //     query: ""
-    //   }));
-    // } else {
-    //   this.closeWindow();
-    // }
-
     this.openMarker(venue_flag);
   };
 
@@ -208,12 +204,8 @@ class App extends Component {
     this.state.venues.map(({ venue }) => {
       if (this.state.isHovered[venue.id] !== prevState.isHovered[venue.id]) {
         venue_flag = this.state.markers.find(marker => marker.id === venue.id);
-
-        // this.infowindow.setContent(venue_flag.details);
-        // this.state.activeMarker
-        //   ? this.infowindow.open(this.map, venue_flag)
-        //   : this.closeWindow();
-        this.openMarker(venue_flag);
+// open marker
+        this.openMarker(venue_flag); 
       }
       return venue_flag;
     });
@@ -223,13 +215,14 @@ class App extends Component {
     if (this.state.activeMarker) {
       this.infowindow.setContent(venue_flag.details);
       this.infowindow.open(this.map, venue_flag);
-      this.map.setZoom(15);
+      console.log(this.infowindow);
+      this.map.setZoom(14);
 
       //Animate marker
       venue_flag.setAnimation(window.google.maps.Animation.BOUNCE);
       setTimeout(() => {
         venue_flag.setAnimation(null);
-      }, 1500);
+      }, 2000);
     } else {
       this.closeWindow();
     }

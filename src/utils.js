@@ -1,22 +1,3 @@
-// "Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept"
-// FETCH DATA
-
-// export const fetchData = () => {
-//   const url = `https://api.foursquare.com/v2/venues/explore?`;
-
-//   const param = {
-//     client_id: `XHUUUJXX3OFGLA1UBYEUDK130OGDBF4UV5XGEYBYJSVEA5SU`,
-//     client_secret: `1SOLCLFGRDG142RJ2FA4CJKC2DC12C42YUSMJ0RBGH4LIGMQ`,
-//     near: `Edinburgh`,
-//     query: `food`,
-//     v: `20190322`
-//   };
-
-//   fetch(`${url}${new URLSearchParams(param)}`)
-//     .then(response => response.json())
-//     .then(data => console.log(data.response.groups[0].items));
-// };
-
 // LOAD SCRIPT FOR  MAP
 export function loadScript(url) {
   // select the first script tag
@@ -41,7 +22,8 @@ export function loadScript(url) {
   defer
   src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"
 />; */
-const API_KEY = `AIzaSyBxgTW-hEQrWjabgvgNEHynxw8mobSzZFQ`;
+
+const API_KEY =  process.env.REACT_APP_API_KEY;
 
 export const loadMap = () => {
   loadScript(

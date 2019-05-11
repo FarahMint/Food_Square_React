@@ -26,7 +26,6 @@ nav {
 #map {
   width: 100%;
   height: 100%;
-  /* margin-top: 8rem; */
 }
 
 .container-venues {
@@ -72,8 +71,27 @@ input {
 .venue__item:hover {
   background-color: rgb(13, 187, 199);
 }
+
+#map_canvas {
+  line-height:normal;
+}
+
+
+
+.gm-style .gm-style.gm-style-iw {
+  /* width: 500px; */
+  overflow: hidden;
+  max-width: 650px!important;
+  white-space: space normal; 
+line-height:normal;
+}
+
+
 .info_box {
-  color: rgb(13, 187, 199);
+  /* color: rgb(13, 187, 199); */
+  color: #333;
+  text-align: center;
+
 }
 .icon {
   order: 1;
@@ -107,6 +125,11 @@ footer a {
     grid-template-columns: 1fr 2fr;
   }
 
+ .gm-style .gm-style-iw {
+    /* width: 300px; */
+    max-width: 400px;
+    overflow: hidden!important;
+}
   .icon {
     display: none;
   }
