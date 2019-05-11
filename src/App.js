@@ -183,12 +183,12 @@ class App extends Component {
   };
 
   handleChange = query => {
-    let filter_venue = this.state.venues.filter(({ venue }) =>venue.name.toLowerCase().includes(query)
+    let filter_venue = this.state.venues.filter(({ venue }) =>venue.name.includes(query)
     );
 
     
     this.state.markers.forEach(marker =>
-      marker.name.toLowerCase().includes(query)
+      marker.name.includes(query)
         ? marker.setVisible(true)
         : marker.setVisible(false)
     );
