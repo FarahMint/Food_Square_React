@@ -183,10 +183,7 @@ class App extends Component {
   };
 
   handleChange = query => {
-    let filter_venue = this.state.venues.filter(({ venue }) =>{
-      console.log(venue.name.toLowerCase());
-      return venue.name.toLowerCase().includes(query);
-    }
+    let filter_venue = this.state.venues.filter(({ venue }) =>venue.name.toLowerCase().includes(query)
     );
 
     
