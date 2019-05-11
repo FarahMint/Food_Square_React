@@ -13,7 +13,6 @@ export function loadScript(url) {
   //  append the child - use insertBefore so we will select the index - the reference \ the 1rst script tag
   // then select its parent node
   // & then insert script before it to keep our script @ the beginning of our list of script
-
   index.parentNode.insertBefore(script, index);
 }
 
