@@ -219,7 +219,7 @@ class App extends Component {
     if (this.state.activeMarker) {
       this.infowindow.setContent(venue_flag.details);
       this.infowindow.open(this.map, venue_flag);
-      console.log(this.infowindow);
+  
       this.map.setZoom(14);
 
       //Animate marker
