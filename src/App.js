@@ -65,7 +65,7 @@ class App extends Component {
     //For the browser access google -> window
     const map = new window.google.maps.Map(document.getElementById("map"), {
       center: center,
-      zoom: 13
+      zoom: 11
     });
     this.map = map;
 
