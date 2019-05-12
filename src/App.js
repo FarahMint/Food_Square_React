@@ -4,13 +4,9 @@ import { loadScript, handle_icon } from "./utils";
 import Venues from "./components/Venues";
 import "./App.css";
 
-// const REACT_APP_API_KEY = process.env.REACT_APP_API_KEY;
-// const REACT_APP_CLIENT_ID = process.env.REACT_APP_CLIENT_ID;
-// const REACT_APP_CLIENT_SECRET = process.env.REACT_APP_CLIENT_SECRET;
-
-
-
- 
+const REACT_APP_API_KEY = process.env.REACT_APP_API_KEY;
+const REACT_APP_CLIENT_ID = process.env.REACT_APP_CLIENT_ID;
+const REACT_APP_CLIENT_SECRET = process.env.REACT_APP_CLIENT_SECRET;
 
 class App extends Component {
   state = {
@@ -22,27 +18,18 @@ class App extends Component {
     query: "",
     filtered: []
   };
-  // const API_KEY = `AIzaSyBxgTW-hEQrWjabgvgNEHynxw8mobSzZFQ`;
+  
 
   fetchData = () => {
     const url = `https://api.foursquare.com/v2/venues/explore?`;
 
-    // const param = {
-    //   client_id: REACT_APP_CLIENT_ID,
-    //   client_secret: REACT_APP_CLIENT_SECRET,
-    //   near: `Edinburgh`,
-    //   query: `food`,
-    //   v: `20190322`
-    // };
     const param = {
-      client_id:  `XHUUUJXX3OFGLA1UBYEUDK130OGDBF4UV5XGEYBYJSVEA5SU`,
-      client_secret: `1SOLCLFGRDG142RJ2FA4CJKC2DC12C42YUSMJ0RBGH4LIGMQ`,
+      client_id: REACT_APP_CLIENT_ID,
+      client_secret: REACT_APP_CLIENT_SECRET,
       near: `Edinburgh`,
       query: `food`,
       v: `20190322`
     };
-
-
 
     fetch(`${url}${new URLSearchParams(param)}`)
       .then(response => response.json())
@@ -61,17 +48,7 @@ class App extends Component {
 
   // MAP
 
-  // loadMap = () => {
-  //   loadScript(
-  //     `https://maps.googleapis.com/maps/api/js?key=${REACT_APP_API_KEY}&callback=initMap`
-  //   );
-  //   //Initialize initMap => for JS to render the init map
-  //   //To keep it visible we convert it to the window obj
-  //   window.initMap = this.initMap;
-  // };
-
   loadMap = () => {
-    const REACT_APP_API_KEY=`AIzaSyBxgTW-hEQrWjabgvgNEHynxw8mobSzZFQ`;
     loadScript(
       `https://maps.googleapis.com/maps/api/js?key=${REACT_APP_API_KEY}&callback=initMap`
     );
@@ -79,11 +56,6 @@ class App extends Component {
     //To keep it visible we convert it to the window obj
     window.initMap = this.initMap;
   };
-
- 
-
-
-
 
   initMap = () => {
     // GET DATA FROM STATE
