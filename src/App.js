@@ -31,6 +31,7 @@ class App extends Component {
       v: `20190322`
     };
 
+
     fetch(`${url}${new URLSearchParams(param)}`)
       .then(response => response.json())
       .then(data => {
@@ -176,8 +177,6 @@ class App extends Component {
   handleChange = query => {
     let filter_venue = this.state.venues.filter(({ venue }) =>venue.name.toLowerCase().includes(query.toLowerCase())
     );
-
-    
     this.state.markers.forEach(marker =>
       marker.name.toLowerCase().includes(query.toLowerCase())
         ? marker.setVisible(true)
@@ -186,11 +185,12 @@ class App extends Component {
 
     this.setState({ filtered: filter_venue, query: query });
 
-    if(query ===""){
 
-      this.map.setCenter();
-    }
   };
+
+  handleSubmit = (e) =>{
+ e.preventDefault();
+  }
 
   componentDidMount() {
     this.fetchData();
@@ -243,6 +243,7 @@ class App extends Component {
             <Venues
               {...this.state}
               handleChange={this.handleChange}
+              handleSubmit={this.handleSubmit}
               handleMouseEnter={this.handleMouseEnter}
               handleMouseLeave={this.handleMouseLeave}
               handleClickList={this.handleClickList}

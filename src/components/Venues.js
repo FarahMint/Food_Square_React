@@ -53,6 +53,7 @@ const Venues = props => {
 
   return (
     <div>
+      
       <label htmlFor="query" hidden>search</label>
       <input
         type="text"
