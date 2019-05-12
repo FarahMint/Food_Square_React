@@ -53,8 +53,10 @@ const Venues = props => {
 
   return (
     <div>
+      <label htmlFor="query" hidden>search</label>
       <input
         type="text"
+        name="query"
         onChange={e => props.handleChange(e.target.value)}
         value={props.query}
         placeholder="look for a restaurant...."

@@ -154,6 +154,7 @@ class App extends Component {
         activeMarker: true
       };
     });
+
   };
 
   handleMouseLeave = index => {
@@ -163,6 +164,7 @@ class App extends Component {
         activeMarker: false
       };
     });
+  
   };
 
   handleClickList = venue => {
@@ -177,12 +179,17 @@ class App extends Component {
 
     
     this.state.markers.forEach(marker =>
-      marker.name.includes(query)
+      marker.name.toLowerCase().includes(query.toLowerCase())
         ? marker.setVisible(true)
         : marker.setVisible(false)
     );
 
     this.setState({ filtered: filter_venue, query: query });
+
+    if(query ===""){
+
+      this.map.setCenter();
+    }
   };
 
   componentDidMount() {
@@ -213,10 +220,13 @@ class App extends Component {
       setTimeout(() => {
         venue_flag.setAnimation(null);
       }, 2000);
-    } else {
+    } 
+    else {
       this.closeWindow();
     }
   };
+
+
   closeWindow() {
     this.infowindow.close();
   }
