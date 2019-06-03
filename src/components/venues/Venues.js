@@ -1,4 +1,9 @@
 import React from "react";
+// import { FaSearch } from 'react-icons/fa';
+// import Form from "./Form";
+
+
+import "./venues.css";
 
 const Venues = props => {
   const display = () => {
@@ -53,15 +58,7 @@ const Venues = props => {
 
   return (
     <div>
-      
-      <label htmlFor="query" hidden>search</label>
-      <input
-        type="text"
-        name="query"
-        onChange={e => props.handleChange(e.target.value)}
-        value={props.query}
-        placeholder="look for a restaurant...."
-      />
+      {/* <Form {...props}/>    */}
       <div className="container-item">{display()}</div>
     </div>
   );

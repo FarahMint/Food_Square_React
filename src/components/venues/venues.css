@@ -1,0 +1,50 @@
+
+.container-venues {
+    display: grid;
+    grid-template-columns: 1fr;
+    margin-top: 5rem;
+    z-index: 2;
+   
+  }
+  /*  DISPLAY VENUES */
+  .container-item {
+    width: 100%;
+    height: 100vh;
+    /* direction: rtl;
+    overflow-y: scroll;
+    overflow-x: hidden; */
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    overflow-y: auto;
+    overflow-x: hidden;
+  
+  
+  }
+  .container-item ul {
+    padding: 0;
+  }
+  input {
+    width: 100%;
+    padding: 1rem;
+    outline: none;
+    border: 1px solid grey;
+  }
+  
+  .venue__item {
+    width: 90%;
+    padding: 0.5rem;
+    list-style: none;
+    font-size: 1rem;
+    margin-top: 1rem;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+    background-color: rgb(63, 13, 199);
+    color: #fefefe;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .venue__item:hover {
+    background-color: rgb(13, 187, 199);
+  }

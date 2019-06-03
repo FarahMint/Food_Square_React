@@ -1,12 +1,21 @@
 import React, { Component } from "react";
 import { loadScript, handle_icon } from "./utils";
 
-import Venues from "./components/Venues";
+import Venues from "./components/venues/Venues";
+import Form from "./components/form/Form";
+import Navbar from "./components/navbar/Navbar";
+import Map from "./components/map/Map";
+ 
+// import TabMobile from "./components/tabMobile/TabMobile"
+import Footer from "./components/footer/Footer";
+
 import "./App.css";
 
 const REACT_APP_API_KEY = process.env.REACT_APP_API_KEY;
 const REACT_APP_CLIENT_ID = process.env.REACT_APP_CLIENT_ID;
 const REACT_APP_CLIENT_SECRET = process.env.REACT_APP_CLIENT_SECRET;
+
+
 
 class App extends Component {
   state = {
@@ -31,11 +40,14 @@ class App extends Component {
       v: `20190322`
     };
 
+ 
+
+
 
     fetch(`${url}${new URLSearchParams(param)}`)
       .then(response => response.json())
       .then(data => {
-        // console.log(data.response);
+      // console.log(data.response);
         this.setState(
           {
             center: data.response.geocode.center,
@@ -57,6 +69,10 @@ class App extends Component {
     //To keep it visible we convert it to the window obj
     window.initMap = this.initMap;
   };
+
+  
+
+
 
   initMap = () => {
     // GET DATA FROM STATE
@@ -175,10 +191,19 @@ class App extends Component {
   };
 
   handleChange = query => {
-    let filter_venue = this.state.venues.filter(({ venue }) =>venue.name.toLowerCase().includes(query.toLowerCase())
+    const regex= new RegExp(`^${query}`, "gi");
+    // 1) Filter venues
+    let filter_venue = this.state.venues.filter(({ venue }) =>{
+      // search with case incensitive -> gi
+        return venue.name.match(regex)
+      // venue.name.toLowerCase().includes(query.toLowerCase())
+    }
     );
+    
+    // 2) Filter marker in the map - 1 way  to filter
+   // another way  to filter
     this.state.markers.forEach(marker =>
-      marker.name.toLowerCase().includes(query.toLowerCase())
+      marker.name.match(regex)
         ? marker.setVisible(true)
         : marker.setVisible(false)
     );
@@ -233,38 +258,43 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        <div className="container">
-          <nav className="header-logo">
-            <span>FoodyEd</span>
-          </nav>
+      <div className="wrapper">
+          <Navbar 
+           {...this.state}
+           handleChange={this.handleChange}
+           handleSubmit={this.handleSubmit}
+           filter_venues={this.filter_venues}
+           />
 
+        <div className="container">
+      
           <div className="container-venues">
-            <Venues
-              {...this.state}
+          {/* <TabMobile/> */}
+
+            <Form
+            {...this.state}
               handleChange={this.handleChange}
               handleSubmit={this.handleSubmit}
+              filter_venues={this.filter_venues}
+             />
+
+            <Venues
+              {...this.state}
               handleMouseEnter={this.handleMouseEnter}
               handleMouseLeave={this.handleMouseLeave}
               handleClickList={this.handleClickList}
               handle_icon={handle_icon}
-              filter_venues={this.filter_venues}
             />
           </div>
-          <div className="container-map" id="map">
-            <h1>Map</h1>
-          </div>
+
+          <Map/>
+
         </div>
-        <footer>
-          <a
-            href="https://github.com/FarahMint"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            FarahMint
-          </a>
-        </footer>
+
+     <Footer />
       </div>
+   
+      
     );
   }
 }
