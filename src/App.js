@@ -7,7 +7,7 @@ import Navbar from "./components/navbar/Navbar";
 import Map from "./components/map/Map";
  
 // import TabMobile from "./components/tabMobile/TabMobile"
-import Footer from "./components/footer/Footer";
+// import Footer from "./components/footer/Footer";
 
 import "./App.css";
 
@@ -290,8 +290,8 @@ class App extends Component {
           <Map/>
 
         </div>
-
-     <Footer />
+{/* need to work on it */}
+     {/* <Footer /> */}
       </div>
    
       
