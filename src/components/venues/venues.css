@@ -2,10 +2,9 @@
 .container-venues {
     display:flex;
     flex-direction: column;
-    z-index: 2;
+    /* z-index: 2; */
     flex:1;
     margin: 1.5rem 0;
-    cursor: pointer;
    
   }
   /*  DISPLAY VENUES */
@@ -50,12 +49,11 @@
     transition: background-color .5s linear;
   }
   .venue__item:hover,
-  .venue__item:focus {
-    background-color: rgb(13, 187, 199);
-  }
+  .venue__item:focus,
   .venue__item .active:hover,
-  .venue__item .active:focus {
+  .venue__item .active:focus  {
     background-color: rgb(13, 187, 199);
+    border: 2px solid rgb(13, 187, 199);
   }
 
  
