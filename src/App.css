@@ -9,16 +9,12 @@
   text-align: center;
 }
 
-
-
 .container {
+  position:relative;
   width: 100%;
-  display: grid;
-  grid-template-columns: 1fr 2fr;
- grid-column-gap: 1.5rem;
+ display:flex;
  justify-content: space-around;
-  /* margin: 0 auto; */
-
+ margin-top: 55px;
   text-align: center;
 }
 
@@ -26,18 +22,14 @@
 #map {
   position: fixed;
   width: 100%;
-  position: fixed;
   right: 0;
   bottom: 0;
-  top: 69px;
+  flex:2;
 }
-
 
 #map_canvas {
   line-height:normal;
 }
-
-
 
 .gm-style .gm-style.gm-style-iw {
   /* width: 500px; */
@@ -86,7 +78,7 @@ line-height:normal;
 
   .venue__item {
     width: 90%;
-    padding: 0.25 1rem;
+    /* padding: 0.25 1rem; */
     list-style: none;
     margin-top: 0.25rem;
     direction: initial;
@@ -108,15 +100,19 @@ line-height:normal;
 @media(min-width:751px){
   .container-venues .form{
     display:block;
+    margin-bottom: 2rem;
   }
   .nav-mobile-search{
     display:none;
   }
 
+  .container{
+    grid-column-gap: .5rem;
+   }
+
 }
 
 @media(max-width:650px){
- .mobile__tab{
-   display:block;
- }
+ 
+ 
 }

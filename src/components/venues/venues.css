@@ -1,9 +1,9 @@
 
 .container-venues {
-    display: grid;
-    grid-template-columns: 1fr;
-    margin-top: 5rem;
+    display:flex;
+    flex-direction: column;
     z-index: 2;
+    flex:1;
    
   }
   /*  DISPLAY VENUES */
@@ -44,7 +44,25 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    cursor:pointer;
+    transition: background-color .5s linear;
   }
-  .venue__item:hover {
+  .venue__item:hover,
+  .venue__item:focus {
     background-color: rgb(13, 187, 199);
   }
+  .venue__item .active:hover,
+  .venue__item .active:focus {
+    background-color: rgb(13, 187, 199);
+  }
+
+ 
+
+
+@media(max-width:650px){
+  .container-venues {
+  position:relative;
+   
+  }
+  
+ }

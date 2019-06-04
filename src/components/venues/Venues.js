@@ -6,8 +6,9 @@ import React from "react";
 import "./venues.css";
 
 const Venues = props => {
+ 
   const display = () => {
-    if (props.filtered.length) {
+    if (props.filtered &&props.filtered.length) {
       return (
         <ul>
           {props.filtered.map(({ venue }) => {
@@ -15,8 +16,6 @@ const Venues = props => {
               <li
                 key={venue.id}
                 className="venue__item"
-                onMouseEnter={() => props.handleMouseEnter(venue.id)}
-                onMouseLeave={() => props.handleMouseLeave(venue.id)}
                 onClick={() => props.handleClickList(venue)}
               >
                 <img
@@ -34,12 +33,10 @@ const Venues = props => {
     } else {
       return (
         <ul>
-          {props.venues.map(({ venue }) => (
+          { props.venues && props.venues.map(({ venue }) => (
             <li
               key={venue.id}
               className="venue__item"
-              onMouseEnter={() => props.handleMouseEnter(venue.id)}
-              onMouseLeave={() => props.handleMouseLeave(venue.id)}
               onClick={() => props.handleClickList(venue)}
             >
               <img
