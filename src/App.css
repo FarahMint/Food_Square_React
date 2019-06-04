@@ -99,8 +99,7 @@ line-height:normal;
 }
 @media(min-width:751px){
   .container-venues .form{
-    display:block;
-    margin-bottom: 2rem;
+    display:flex;
   }
   .nav-mobile-search{
     display:none;
