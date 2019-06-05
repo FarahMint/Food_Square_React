@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import { loadScript, handle_icon } from "./utils";
 
-import Venues from "./components/venues/Venues";
-import Form from "./components/form/Form";
-import Navbar from "./components/navbar/Navbar";
-import Map from "./components/map/Map";
+import Sidebar from "./components/Sidebar/Sidebar";
+ 
+import Navbar from "./components/Navbar/Navbar";
+import Map from "./components/Map/Map";
  
 
-// import Footer from "./components/footer/Footer";
+import Footer from "./components/Footer/Footer";
 
 import "./App.css";
 
@@ -19,14 +19,15 @@ const REACT_APP_CLIENT_SECRET = process.env.REACT_APP_CLIENT_SECRET;
 
 class App extends Component {
   state = {
-    venues: [],
     center: null,
     markers: [],
+    venues: [],
     isHovered: {},
     activeMarker: false,
     query: "",
     filtered: [],
-    sideNavOpen: false,
+
+    sidebarOpen: false,
   };
   
 
@@ -40,7 +41,6 @@ class App extends Component {
       query: `food`,
       v: `20190322`
     };
-
 
     fetch(`${url}${new URLSearchParams(param)}`)
       .then(response => response.json())
@@ -67,12 +67,13 @@ class App extends Component {
     //To keep it visible we convert it to the window obj
     window.initMap = this.initMap;
   };
+  
 
   initMap = () => {
     // GET DATA FROM STATE
     // const { list } = this.props;
     let markers = [];
-    let center = { ...this.state.center };
+    let center =this.state.center;
     //For the browser access google -> window
     const map = new window.google.maps.Map(document.getElementById("map"), {
       center: center,
@@ -177,14 +178,18 @@ class App extends Component {
     });
   };
 
+  /** when click on list find the marker on the map */
   handleClickList = venue => {
     const {id} = venue;
     let venue_flag = this.state.markers.find(marker => marker.id === id);
-    this.setState({activeMarker: true});
-    this.openMarker(venue_flag);
+    this.setState({activeMarker: true,  sidebarOpen: false });
+    return this.openMarker(venue_flag);
   };
 
-  handleChange = query => {
+ /** when user perform a search filter list and find the corresponding marker on the map */
+  handleQuery = query => {
+    // open sidebar to view list of venues
+    this.setState({sidebarOpen: true });
     const regex= new RegExp(`^${query}`, "gi");
     // 1) Filter venues
     let filter_venue = this.state.venues.filter(({ venue }) =>{
@@ -193,6 +198,7 @@ class App extends Component {
       // venue.name.toLowerCase().includes(query.toLowerCase())
     }
     );
+    this.setState({ filtered: filter_venue, query: query });
     
     // 2) Filter marker in the map - 1 way  to filter
    // another way  to filter
@@ -201,31 +207,7 @@ class App extends Component {
         ? marker.setVisible(true)
         : marker.setVisible(false)
     );
-
-    this.setState({ filtered: filter_venue, query: query });
-
-
   };
-
-  handleSubmit = (e) =>{
- e.preventDefault();
-  }
-
-  componentDidMount() {
-    this.fetchData();
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    let venue_flag;
-    this.state.venues.map(({ venue }) => {
-      if (this.state.isHovered[venue.id] !== prevState.isHovered[venue.id]) {
-        venue_flag = this.state.markers.find(marker => marker.id === venue.id);
-// open marker
-        this.openMarker(venue_flag); 
-      }
-      return venue_flag;
-    });
-  }
 
   openMarker = venue_flag => {
     if (this.state.activeMarker) {
@@ -244,49 +226,56 @@ class App extends Component {
       this.closeWindow();
     }
   };
+ 
 
+  componentDidMount() {
+    this.fetchData();
+  }
 
+  componentDidUpdate(prevProps, prevState) {
+    let venue_flag;
+    this.state.venues.map(({ venue }) => {
+      if (this.state.isHovered[venue.id] !== prevState.isHovered[venue.id]) {
+        venue_flag = this.state.markers.find(marker => marker.id === venue.id);
+        // open marker
+        this.openMarker(venue_flag); 
+      }
+      return venue_flag;
+    });
+  }
   closeWindow() {
     this.infowindow.close();
   }
-  render() {
 
+
+  sidebarToggle= ()=>{
+ this.setState((prevState)=>{
+   return { sidebarOpen : !prevState.sidebarOpen}
+ })
+
+  }
+  render() {
     return (
-   
       <div className="wrapper">
           <Navbar 
-           {...this.state}
-           handleChange={this.handleChange}
-           handleSubmit={this.handleSubmit}
-           filter_venues={this.filter_venues}
-           />
+           sidebarToggle={this.sidebarToggle}
+            handleQuery ={this.handleQuery }
+         filter_venues={this.filter_venues} />
 
-        <div className="container">
-      
-          <div className="container-venues">
-    
-            <Form
-            {...this.state}
-              handleChange={this.handleChange}
-              handleSubmit={this.handleSubmit}
-              filter_venues={this.filter_venues}
-             />
+        {this.state.sidebarOpen && <Sidebar {...this.state}
+           handleQuery ={this.handleQuery }
+        filter_venues={this.filter_venues}
+          handleClickList={this.handleClickList}
+        />}
+     
+        <main className="container-map">
+            <Map/>
+        
+           
+        </main>
 
-            <Venues
-              {...this.state}
-              handleClickList={this.handleClickList}
-              handle_icon={handle_icon}
-            />
-          </div>
-
-          <Map/>
-
-        </div>
-{/* need to work on it */}
-     {/* <Footer /> */}
-      </div>
-    
-      
+         <Footer />  
+      </div>     
     );
   }
 }

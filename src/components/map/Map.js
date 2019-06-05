@@ -1,9 +1,10 @@
-import React from 'react'
+import React from "react";
 
-export default function Map() {
+const Map=()=> {
     return (
-    <div className="container-map" id="map">
-        <h1>Map</h1>
-    </div>
+    <React.Fragment>
+      <div id="map"></div>
+    </React.Fragment>
     )
 }
+export default Map;

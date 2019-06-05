@@ -1,25 +1,24 @@
 import React from 'react';
-// import { useState, useEffect } from 'react';
- import Form from "../form/Form";
-// import { handle_icon } from "../utils";
-
-import "./navbar.css"
+ 
+import Form from "../Form/Form";
+import  SidebarButton from "../Sidebar/SidebarButton";
+import "./navbar.css";
 
 const Navbar = (props) => {
-
- 
-
+ const {sidebarToggle,  handleQuery ,filter_venues  } = props
     return (
-        <header>
-        <nav className="header-logo">
+        <header className="toolbar">
+        
+        <nav className="toolbar__navigation">
+        <SidebarButton sidebarToggle= {sidebarToggle}/>
+          <div  className="toolbar__logo">
           <span>FoodyEd</span>  
+          </div>
           <Form
             {...props}
-              handleChange={props.handleChange}
-              handleSubmit={props.handleSubmit}
-              filter_venues={props.filter_venues}
-             />
-
+               handleQuery ={ handleQuery }
+              filter_venues={filter_venues}
+             /> 
         </nav>
       </header>
     )

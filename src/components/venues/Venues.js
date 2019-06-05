@@ -1,12 +1,9 @@
 import React from "react";
-// import { FaSearch } from 'react-icons/fa';
-// import Form from "./Form";
-
-
 import "./venues.css";
 
 const Venues = props => {
- 
+//  display either the search performed by user or all the venues fetch from the API
+// 1) display  the search performed by user
   const display = () => {
     if (props.filtered &&props.filtered.length) {
       return (
@@ -31,6 +28,7 @@ const Venues = props => {
         </ul>
       );
     } else {
+      //  2) if no search are performed by user get all the venues fetched from the API
       return (
         <ul>
           { props.venues && props.venues.map(({ venue }) => (
@@ -54,10 +52,9 @@ const Venues = props => {
   };
 
   return (
-    <div>
-      {/* <Form {...props}/>    */}
+    <React.Fragment>
       <div className="container-item">{display()}</div>
-    </div>
+    </React.Fragment>
   );
 };
 export default Venues;

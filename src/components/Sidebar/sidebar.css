@@ -1,0 +1,12 @@
+.sidebar__venues{
+    height:calc(100% - 56px) ;
+    background: #fefefe;
+    box-shadow: 2px 0px 2px rgba(0,0,0,.5);
+    max-width: 400px;
+    width:70%;
+    position:fixed;
+    top:56px;
+   left:0;
+   /* to be above the backdrop */
+   z-index:200;
+}

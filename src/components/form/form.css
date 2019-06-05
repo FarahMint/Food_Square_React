@@ -1,5 +1,6 @@
 .form {
     position:relative;
+    width: 40%;
     z-index:5;
     cursor: pointer;
   }
@@ -32,10 +33,31 @@
     color:#646F79;
     font-style: italic !important;
   }
+  input::placeholder {
+    font-size: .85rem;
+  }
   
   input:active,
   input:focus{
     font-size: 1.25rem;
     border-bottom: 2px solid;
     border-bottom-color: rgb(13, 187, 199);
+  }
+
+
+  @media(max-width:650px){
+
+    .form {
+      width: 70%;
+    }
+
+    input::placeholder {
+      font-size: .5rem;
+    }
+    input{
+      font-size: .85rem;
+      color:#646F79;
+      font-style: italic !important;
+    }
+ 
   }

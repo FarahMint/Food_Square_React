@@ -1,30 +1,14 @@
 .wrapper{
-  width: 100vw;
-  min-height: calc(100vh - 70px);
-  /* height: 100vh; */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.container {
-  position:relative;
   width: 100%;
- display:flex;
- justify-content: space-around;
- margin-top: 55px;
-  text-align: center;
+  max-height: 100%;
+  height: calc(100vh - 60px) ;
+  position: relative;
 }
-
-
-#map {
-  position: fixed;
+ 
+main #map{
+ margin-top: 56px;
   width: 100%;
-  right: 0;
-  bottom: 0;
-  flex:2;
+  height: 100vh;
 }
 
 #map_canvas {
@@ -63,9 +47,6 @@ line-height:normal;
 }
 
 @media only screen and (max-width: 650px) {
-  .container {
-    grid-template-columns: 1fr 2fr;
-  }
   
  .gm-style .gm-style-iw {
     /* width: 300px; */
@@ -78,7 +59,6 @@ line-height:normal;
 
   .venue__item {
     width: 90%;
-    /* padding: 0.25 1rem; */
     list-style: none;
     margin-top: 0.25rem;
     direction: initial;
@@ -106,13 +86,5 @@ line-height:normal;
     display:none;
   }
 
-  .container{
-    grid-column-gap: .5rem;
-   }
-
 }
 
-@media(max-width:650px){
- 
- 
-}

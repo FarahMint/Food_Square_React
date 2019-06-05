@@ -4,21 +4,22 @@ import { FaSearch } from 'react-icons/fa';
 import "./form.css";
 
 const Form =(props) =>{
+  const { handleQuery , query }= props;
     return (
       <React.Fragment>    
-     <div className="form nav-mobile-search">
+     <form className="form">
         <label htmlFor="query" hidden>search</label>
         
         <input
           type="text"
           name="query"
           className="form-control"
-          onChange={e => props.handleChange(e.target.value)}
-          value={props.query}
+          onChange={e => handleQuery(e.target.value)}
+          value={query}
           placeholder="Search for a restaurant here..."
         />
         <FaSearch  className="search-icon"/>
-        </div>
+        </form>
       </React.Fragment>
     )
 }
