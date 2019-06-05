@@ -8,8 +8,7 @@ const Form =(props) =>{
     return (
       <React.Fragment>    
      <form className="form">
-        <label htmlFor="query" hidden>search</label>
-        
+        <label htmlFor="query" hidden>search</label>  
         <input
           type="text"
           name="query"
@@ -18,7 +17,7 @@ const Form =(props) =>{
           value={query}
           placeholder="Search for a restaurant here..."
         />
-        <FaSearch  className="search-icon"/>
+        <FaSearch  className="search-icon" aria-label="search bar"/>
         </form>
       </React.Fragment>
     )

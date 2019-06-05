@@ -1,7 +1,6 @@
 import React from 'react';
 import "./footer.css";
 
-
 const Footer =()=> {
     return (
         <footer>
@@ -9,12 +8,9 @@ const Footer =()=> {
           href="https://github.com/FarahMint"
           target="_blank"
           rel="noopener noreferrer"
-        >
-          FarahMint
+        > FarahMint
         </a>
       </footer>
     )
 }
-
-
 export default  Footer;

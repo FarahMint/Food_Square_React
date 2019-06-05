@@ -20,7 +20,6 @@ const Venues = props => {
                   alt={venue.name}
                   className="icon"
                 />
-
                 {venue.name}
               </li>
             );

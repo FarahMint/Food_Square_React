@@ -1,6 +1,6 @@
 import React from 'react';
  
-import Form from "../Form/Form";
+import Form from "../form/Form";
 import  SidebarButton from "../Sidebar/SidebarButton";
 import "./navbar.css";
 
@@ -23,5 +23,4 @@ const Navbar = (props) => {
       </header>
     )
 }
-
 export default  Navbar;

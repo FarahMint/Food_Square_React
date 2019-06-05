@@ -1,5 +1,5 @@
 import React from 'react'
-import Venues from "../Venues/Venues";
+import Venues from "../venues/Venues";
 
 import {  handle_icon } from "../../utils";
 
@@ -14,7 +14,6 @@ const Sidebar =(props)=> {
               handleClickList={handleClickList}
               handle_icon={handle_icon}
             />
-
         </div>
     )
 }

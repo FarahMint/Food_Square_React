@@ -2,12 +2,9 @@ import React, { Component } from "react";
 import { loadScript, handle_icon } from "./utils";
 
 import Sidebar from "./components/Sidebar/Sidebar";
- 
-import Navbar from "./components/Navbar/Navbar";
-import Map from "./components/Map/Map";
- 
-
-import Footer from "./components/Footer/Footer";
+import Navbar from "./components/navbar/Navbar";
+import Map from "./components/map/Map";
+import Footer from "./components/footer/Footer";
 
 import "./App.css";
 
@@ -249,7 +246,7 @@ class App extends Component {
 
 
   sidebarToggle= ()=>{
- this.setState((prevState)=>{
+    this.setState((prevState)=>{
    return { sidebarOpen : !prevState.sidebarOpen}
  })
 
@@ -259,19 +256,17 @@ class App extends Component {
       <div className="wrapper">
           <Navbar 
            sidebarToggle={this.sidebarToggle}
-            handleQuery ={this.handleQuery }
-         filter_venues={this.filter_venues} />
+           handleQuery ={this.handleQuery }
+           filter_venues={this.filter_venues} />
 
         {this.state.sidebarOpen && <Sidebar {...this.state}
-           handleQuery ={this.handleQuery }
-        filter_venues={this.filter_venues}
+          handleQuery ={this.handleQuery }
+          filter_venues={this.filter_venues}
           handleClickList={this.handleClickList}
         />}
      
         <main className="container-map">
-            <Map/>
-        
-           
+            <Map/>   
         </main>
 
          <Footer />  
