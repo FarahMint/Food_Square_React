@@ -38,7 +38,7 @@ class App extends Component {
       query: `food`,
       v: `20190322`
     };
-
+ 
     fetch(`${url}${new URLSearchParams(param)}`)
       .then(response => response.json())
       .then(data => {
@@ -64,7 +64,8 @@ class App extends Component {
     //To keep it visible we convert it to the window obj
     window.initMap = this.initMap;
   };
-  
+
+ 
 
   initMap = () => {
     // GET DATA FROM STATE
@@ -126,7 +127,7 @@ class App extends Component {
       });
 
       marker.addListener("mouseover", () => {
-        this.handleMouseEnter(venue.id);
+     
         // set new content
         infowindow.setContent(window_text);
         // open window
@@ -141,7 +142,7 @@ class App extends Component {
       marker.addListener("mouseout", () => {
         // open window
         infowindow.close();
-        this.handleMouseLeave(venue.id);
+     
       });
 
       markers = markers.concat(marker);
@@ -155,32 +156,13 @@ class App extends Component {
     });
   };
 
-  // hover
-  handleMouseEnter = index => {
-    this.setState(prevState => {
-      return {
-        isHovered: { ...prevState.isHovered, [index]: true },
-        activeMarker: true
-      };
-    });
-
-  };
-
-  handleMouseLeave = index => {
-    this.setState(prevState => {
-      return {
-        isHovered: { ...prevState.isHovered, [index]: false },
-        activeMarker: false
-      };
-    });
-  };
-
   /** when click on list find the marker on the map */
   handleClickList = venue => {
     const {id} = venue;
     let venue_flag = this.state.markers.find(marker => marker.id === id);
-    this.setState({activeMarker: true,  sidebarOpen: false });
-    return this.openMarker(venue_flag);
+    this.setState({ sidebarOpen: false });
+    this.openMarker(venue_flag);
+    return venue_flag;
   };
 
  /** when user perform a search filter list and find the corresponding marker on the map */
@@ -197,8 +179,8 @@ class App extends Component {
     );
     this.setState({ filtered: filter_venue, query: query });
     
-    // 2) Filter marker in the map - 1 way  to filter
-   // another way  to filter
+  
+   //loop through each marker
     this.state.markers.forEach(marker =>
       marker.name.match(regex)
         ? marker.setVisible(true)
@@ -207,7 +189,6 @@ class App extends Component {
   };
 
   openMarker = venue_flag => {
-    if (this.state.activeMarker) {
       this.infowindow.setContent(venue_flag.details);
       this.infowindow.open(this.map, venue_flag);
   
@@ -218,30 +199,15 @@ class App extends Component {
       setTimeout(() => {
         venue_flag.setAnimation(null);
       }, 2000);
-    } 
-    else {
-      this.closeWindow();
-    }
+ 
   };
  
+  closeWindow() {
+    this.infowindow.close();
+  }
 
   componentDidMount() {
     this.fetchData();
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    let venue_flag;
-    this.state.venues.map(({ venue }) => {
-      if (this.state.isHovered[venue.id] !== prevState.isHovered[venue.id]) {
-        venue_flag = this.state.markers.find(marker => marker.id === venue.id);
-        // open marker
-        this.openMarker(venue_flag); 
-      }
-      return venue_flag;
-    });
-  }
-  closeWindow() {
-    this.infowindow.close();
   }
 
 
@@ -262,7 +228,7 @@ class App extends Component {
         {this.state.sidebarOpen && <Sidebar {...this.state}
           handleQuery ={this.handleQuery }
           filter_venues={this.filter_venues}
-          handleClickList={this.handleClickList}
+          handleClickList={this.handleClickList}  
         />}
      
         <main className="container-map">
