@@ -15,7 +15,7 @@ const Form =(props) =>{
           className="form-control"
           onChange={e => handleQuery(e.target.value)}
           value={query}
-          placeholder="Search for a restaurant here..."
+          placeholder="Search for a restaurant in Edinburgh..."
         />
         <FaSearch  className="search-icon" aria-label="search bar"/>
         </form>
