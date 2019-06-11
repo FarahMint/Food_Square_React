@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { loadScript, handle_icon } from "./utils";
+import { loadScript, handle_icon, fetchData } from "./utils";
 
 import Sidebar from "./components/Sidebar/Sidebar";
 import Navbar from "./components/navbar/Navbar";
@@ -9,17 +9,12 @@ import Footer from "./components/footer/Footer";
 import "./App.css";
 
 const REACT_APP_API_KEY = process.env.REACT_APP_API_KEY;
-const REACT_APP_CLIENT_ID = process.env.REACT_APP_CLIENT_ID;
-const REACT_APP_CLIENT_SECRET = process.env.REACT_APP_CLIENT_SECRET;
-
-
-
+ 
 class App extends Component {
   state = {
     center: null,
     markers: [],
     venues: [],
-    isHovered: {},
     activeMarker: false,
     query: "",
     filtered: [],
@@ -27,32 +22,23 @@ class App extends Component {
     sidebarOpen: false,
   };
   
-
-  fetchData = () => {
-    const url = `https://api.foursquare.com/v2/venues/explore?`;
-
-    const param = {
-      client_id: REACT_APP_CLIENT_ID,
-      client_secret: REACT_APP_CLIENT_SECRET,
-      near: `Edinburgh`,
-      query: `food`,
-      v: `20190322`
-    };
  
-    fetch(`${url}${new URLSearchParams(param)}`)
-      .then(response => response.json())
-      .then(data => {
-      // console.log(data.response);
-        this.setState(
-          {
-            center: data.response.geocode.center,
-            venues: data.response.groups[0].items
-          },
-          // load map only when get venues
-          this.loadMap()
-        );
-      });
-  };
+
+  getData= async()=>{
+    
+   try{
+    //  call foodSquare Api
+    const data = await fetchData();
+    this.setState(
+      {
+        center: data.response.geocode.center,
+        venues: data.response.groups[0].items
+      }, 
+      // directly after getting data from foodSquare API load the map
+      this.loadMap());
+    }catch(err){console.log(err)} ;
+  }
+
 
   // MAP
 
@@ -64,7 +50,6 @@ class App extends Component {
     //To keep it visible we convert it to the window obj
     window.initMap = this.initMap;
   };
-
  
 
   initMap = () => {
@@ -145,8 +130,8 @@ class App extends Component {
      
       });
 
-      markers = markers.concat(marker);
-      return this.marker;
+   
+      return markers = markers.concat(marker);
     });
 
     this.setState(() => {
@@ -169,23 +154,22 @@ class App extends Component {
   handleQuery = query => {
     // open sidebar to view list of venues
     this.setState({sidebarOpen: true });
+    // search with case incensitive -> gi
     const regex= new RegExp(`^${query}`, "gi");
-    // 1) Filter venues
-    let filter_venue = this.state.venues.filter(({ venue }) =>{
-      // search with case incensitive -> gi
-        return venue.name.match(regex)
-      // venue.name.toLowerCase().includes(query.toLowerCase())
-    }
-    );
-    this.setState({ filtered: filter_venue, query: query });
-    
-  
+    let filter_venue =[];
+      // 1) Filter venues
+      filter_venue = this.state.venues.filter(({ venue }) =>  venue.name.match(regex));
+      this.setState({ filtered: filter_venue, query: query })
+     
    //loop through each marker
     this.state.markers.forEach(marker =>
       marker.name.match(regex)
         ? marker.setVisible(true)
         : marker.setVisible(false)
     );
+
+    
+
   };
 
   openMarker = venue_flag => {
@@ -207,7 +191,8 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.fetchData();
+    // this.fetchData();
+    this.getData()
   }
 
 

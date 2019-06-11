@@ -22,15 +22,29 @@ export function loadScript(url) {
   src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"
 />; */
 
-const API_KEY =  process.env.REACT_APP_API_KEY;
+const REACT_APP_CLIENT_ID = process.env.REACT_APP_CLIENT_ID;
+const REACT_APP_CLIENT_SECRET = process.env.REACT_APP_CLIENT_SECRET;
+// ------------------------------------
+// FETCH API
+// ------------------------------------
 
-export const loadMap = () => {
-  loadScript(
-    `https://maps.googleapis.com/maps/api/js?key=${API_KEY}&callback=initMap`
-  );
-  //Initialize initMap => for JS to render the init map
-  //To keep it visible we convert it to the window obj
-  window.initMap = this.initMap;
+export const fetchData = async() => {
+  const url = `https://api.foursquare.com/v2/venues/explore?`;
+
+  const param = {
+    client_id: REACT_APP_CLIENT_ID,
+    client_secret: REACT_APP_CLIENT_SECRET,
+    near: `Edinburgh`,
+    query: `food`,
+    v: `20190322`
+  };
+
+  try{
+    const dataResponse = await fetch(`${url}${new URLSearchParams(param)}`);
+    let dataVenues = await dataResponse.json();
+    // console.log(dataVenues);
+    return dataVenues;
+  }catch(err){console.log(err)}     
 };
 
 // ------------------------------------
@@ -38,12 +52,17 @@ export const loadMap = () => {
 // ------------------------------------
 
 export const handle_icon = venue => {
+  // Destructure venue obj
+  // 1- get categories array -- then  get index of this array
   const {
     categories: [index]
   } = venue;
   const size = `32`;
+  // 2- inside  this array get icon object to reach prefix & suffix obj
   const img = `${index.icon.prefix}${size}${index.icon.suffix}`;
   // console.log(index.icon.prefix);
   // console.log(img);
   return img;
 };
+
+ 
