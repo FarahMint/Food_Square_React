@@ -1,13 +1,29 @@
 import React from "react";
+
+import {  handle_icon  } from "../../utils";
+import { FaSmileWink } from 'react-icons/fa';
 import "./venues.css";
 
+
 const Venues = props => {
-//  display either the search performed by user or all the venues fetch from the API
+
 // 1) display  the search performed by user
   const display = () => {
+    // if no item found when do research 
+    if( props.displayNoFound){
+       return (
+         <React.Fragment>
+ <p className="not__found">Sorry no restaurant was found in Edinburgh. Try another one 
+ <FaSmileWink aria-label="smyley"/>
+ </p>
+         </React.Fragment>
+      )
+      } 
+//  otherwise -> display either the search performed by user or all the venues fetch from the API
     if (props.filtered &&props.filtered.length) {
       return (
         <ul>
+       
           {props.filtered.map(({ venue }) => {
             return (
               <li
@@ -16,7 +32,7 @@ const Venues = props => {
                 onClick={() => props.handleClickList(venue)}
               >
                 <img
-                  src={props.handle_icon(venue)}
+                  src={handle_icon(venue)}
                   alt={venue.name}
                   className="icon"
                 />
@@ -37,7 +53,7 @@ const Venues = props => {
               onClick={() => props.handleClickList(venue)}
             >
               <img
-                src={props.handle_icon(venue)}
+                src={handle_icon(venue)}
                 alt={venue.name}
                 className="icon"
               />

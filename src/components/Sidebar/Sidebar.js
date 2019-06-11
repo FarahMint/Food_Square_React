@@ -1,8 +1,6 @@
 import React from 'react'
 import Venues from "../venues/Venues";
 
-import {  handle_icon } from "../../utils";
-
 
 import "./sidebar.css"
 const Sidebar =(props)=> {
@@ -12,7 +10,6 @@ const Sidebar =(props)=> {
            <Venues
               {...props}
               handleClickList={handleClickList}
-              handle_icon={handle_icon}
             />
         </div>
     )

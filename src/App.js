@@ -8,7 +8,7 @@ import Footer from "./components/footer/Footer";
 
 import "./App.css";
 
-const REACT_APP_API_KEY = process.env.REACT_APP_API_KEY;
+ const REACT_APP_API_KEY = process.env.REACT_APP_API_KEY;
  
 class App extends Component {
   state = {
@@ -20,6 +20,7 @@ class App extends Component {
     filtered: [],
 
     sidebarOpen: false,
+    displayNoFound: false,
   };
   
  
@@ -50,6 +51,7 @@ class App extends Component {
     //To keep it visible we convert it to the window obj
     window.initMap = this.initMap;
   };
+
  
 
   initMap = () => {
@@ -150,16 +152,26 @@ class App extends Component {
     return venue_flag;
   };
 
+  
+
  /** when user perform a search filter list and find the corresponding marker on the map */
-  handleQuery = query => {
-    // open sidebar to view list of venues
-    this.setState({sidebarOpen: true });
+  handleQuery =(  query) => {
+    // open sidebar to view list of venues and remove msg not found 
+    this.setState({ sidebarOpen: true, displayNoFound:false,});
+  
     // search with case incensitive -> gi
     const regex= new RegExp(`^${query}`, "gi");
-    let filter_venue =[];
+    
+ 
       // 1) Filter venues
-      filter_venue = this.state.venues.filter(({ venue }) =>  venue.name.match(regex));
+      let filter_venue = this.state.venues.filter(({ venue }) => venue.name.match(regex));
       this.setState({ filtered: filter_venue, query: query })
+      // console.log(filter_venue);
+
+      // -- check if venues are in the list provided by the API
+      if(filter_venue.length === 0 && query !==""){
+        this.setState({displayNoFound: true });
+      }
      
    //loop through each marker
     this.state.markers.forEach(marker =>

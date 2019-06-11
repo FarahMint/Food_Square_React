@@ -49,8 +49,10 @@
 
  
 
-
-@media(max-width:650px){
-  
-  
+ .not__found{
+   text-align: center;
+   color:#fefefe;
+   background-color: rgba(63, 13, 199, .6);
+   padding: 1rem 0;
+   line-height: 2;
  }

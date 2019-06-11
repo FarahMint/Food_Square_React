@@ -39,6 +39,8 @@ export const fetchData = async() => {
     v: `20190322`
   };
 
+ 
+
   try{
     const dataResponse = await fetch(`${url}${new URLSearchParams(param)}`);
     let dataVenues = await dataResponse.json();
@@ -64,5 +66,4 @@ export const handle_icon = venue => {
   // console.log(img);
   return img;
 };
-
  
