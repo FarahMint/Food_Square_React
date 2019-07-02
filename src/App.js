@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import PropTypes from 'prop-types';
+
 import { loadScript, handle_icon, fetchData } from "./utils";
 
 import Sidebar from "./components/Sidebar/Sidebar";
@@ -23,7 +25,7 @@ class App extends Component {
     displayNoFound: false,
   };
   
- 
+
 
   getData= async()=>{
     
@@ -52,7 +54,7 @@ class App extends Component {
     window.initMap = this.initMap;
   };
 
- 
+
 
   initMap = () => {
     // GET DATA FROM STATE
@@ -143,6 +145,7 @@ class App extends Component {
     });
   };
 
+
   /** when click on list find the marker on the map */
   handleClickList = venue => {
     const {id} = venue;
@@ -152,7 +155,7 @@ class App extends Component {
     return venue_flag;
   };
 
-  
+
 
  /** when user perform a search filter list and find the corresponding marker on the map */
   handleQuery =(  query) => {
@@ -184,6 +187,8 @@ class App extends Component {
 
   };
 
+
+
   openMarker = venue_flag => {
       this.infowindow.setContent(venue_flag.details);
       this.infowindow.open(this.map, venue_flag);
@@ -197,7 +202,7 @@ class App extends Component {
       }, 2000);
  
   };
- 
+  
   closeWindow() {
     this.infowindow.close();
   }
@@ -214,6 +219,8 @@ class App extends Component {
  })
 
   }
+
+
   render() {
     return (
       <div className="wrapper">
@@ -237,5 +244,29 @@ class App extends Component {
     );
   }
 }
+
+App.propTypes = {
+  name: PropTypes.string,
+  center: null,
+  markers:PropTypes.array,
+  venues: PropTypes.array,
+  filtered: PropTypes.array,
+  activeMarker:  PropTypes.bool,
+  query: PropTypes.string,
+
+  sidebarOpen:  PropTypes.bool,
+  displayNoFound:  PropTypes.bool,
+
+  getData: PropTypes.func,
+  loadMap : PropTypes.func,
+  initMap : PropTypes.func,
+  handleClickList : PropTypes.func,
+  handleQuery: PropTypes.func,
+  openMarker: PropTypes.func,
+  closeWindow: PropTypes.func,
+  sidebarToggle: PropTypes.func,
+};
+
+
 
 export default App;
