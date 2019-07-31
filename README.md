@@ -1,14 +1,86 @@
-STACK: React.js && Food Square API && Google Map Api
 
-PLAN TO WORK ON THE UI ON MOBILE
+This project is currently hosted  with [Netlify](https://food-square.netlify.com/). still working on
 
-PRINT SCREEN
+##Foodyed project 
 
- --- 1 - LANDING PAGE - FETCH UP TO DATE RESTAURANT RECOMMENDATION & LOCATION ON THE MAP
-![1_landing_page](https://user-images.githubusercontent.com/18241226/57701441-eb169680-7653-11e9-8eca-03973ad34b9c.png)
+Restaurant recommendation with filtering and search feature as well as location.
 
- --- 2 - START SEARCH FOR RESTAURANT - FILTERING ACTION TRIGGERED - LIST AND MAP
-![2_start_search-filtering _action_trigger](https://user-images.githubusercontent.com/18241226/57701442-ebaf2d00-7653-11e9-8230-ac6eda22ae06.png)
+Build with:
 
- --- 2 - HOVER ACTION ON ITEM CREATE AN EVENT THAT POP UP THE WINDOW INFO AND MARKER OF THE CORRESPONDING RESTAURANT
-![3_hover_action_list_item](https://user-images.githubusercontent.com/18241226/57701444-ebaf2d00-7653-11e9-85c7-6e5030a86c70.png)
+ 	1.	React.js,  
+	2.	Food Square API 
+	3.	Google Map Api
+
+
+ ## 🧐 What's inside?
+ A quick look at the top-level files and directories you'll see in my React project.
+
+FOLDER STRUCTURE
+( ROOT )
+
+--- index.tsx
+
+--- index.js
+--- app.js
+---utils.js  # helper functions to load the script tag for the map,  fetch dtata from the               FoodSquare API and  get images
+
+    --- components
+
+        --- footer
+            ---Footer.js
+        --- form
+            ---Form.js
+        --- map
+            ---Map.js
+        --- navbar
+             ---Navbar.js
+        --- Sidebar
+            ---Sidebar.js
+            ---SidebarButton.js
+        --- venues
+            ---Venues.js
+           
+
+ ## 💫 Deployed
+
+[![Deployed with Netlify]]
+
+[deployment](https://food-square.netlify.com/)  
+
+ 
+#print screen
+
+1.  **`Mobile & Tablet Landing page: fetch restaurants recommendation & map locations`**
+
+<img align="left" src="https://user-images.githubusercontent.com/18241226/62236580-48a2bf80-b3c7-11e9-9f7c-8c62a698215f.png" alt="1_tablet-landing" title="1_tablet-landing" hspace="20"/>
+<img align="left" src="https://user-images.githubusercontent.com/18241226/62236578-48a2bf80-b3c7-11e9-9863-e769d6479b5c.png" alt="1_mobile-landing" title="1_mobile-landing" hspace="20"/>
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+
+
+2.  **`Mobile & Tablet: user search restaurants - filter action triggered - fetch & display restaurants recommendation as well it's corresponding  map locations according to search`**
+
+ <img align="left" src="https://user-images.githubusercontent.com/18241226/62236583-493b5600-b3c7-11e9-94e3-a993699a8ce8.png" alt="1_mobile-landing-page" title="1_mobile-landing-page" hspace="20"/>
+<img align="left" src="https://user-images.githubusercontent.com/18241226/62236582-493b5600-b3c7-11e9-9c63-d5a902eb9a99.png" alt="2_tablet-start-search" title="2_tablet-start-search" hspace="20"/>
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+
+
+
+
+3.  **`Mobile & Tablet: user click on one suggestion which trigger an event in which a info-window and location marker of the corresponding restaurant pop up on the map`**
+ 
+ <img align="left" src="https://user-images.githubusercontent.com/18241226/62236585-49d3ec80-b3c7-11e9-909b-974b7f2056fa.png" alt="3_tablet-after-user-click-on-result" title="3_tablet-after-user-click-on-result" hspace="20"/>
+<img align="left" src="https://user-images.githubusercontent.com/18241226/62236584-493b5600-b3c7-11e9-8a9b-6fdba8fcfdfb.png" alt="3_mobile-after-user-click-on-result" title="3_mobile-after-user-click-on-result" hspace="20"/>
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+
+
+
+
+
+4.  **`Mobile & Tablet: all result display when user clear research`**
+ 
+ <img align="left" src="https://user-images.githubusercontent.com/18241226/62236589-49d3ec80-b3c7-11e9-8691-bd0c3ddaa1c7.png" alt="4_tablet-all results" title="4_tablet-all results" hspace="20"/>
+<img align="left" src="https://user-images.githubusercontent.com/18241226/62236586-49d3ec80-b3c7-11e9-80c7-9c65b54d16e4.png" alt="4_mobile-all-results" title="4_mobile-all-results" hspace="20"/>
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+ 
+ 
+
