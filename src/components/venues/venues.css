@@ -43,13 +43,12 @@
   .venue__item:focus,
   .venue__item .active:hover,
   .venue__item .active:focus  {
-    background-color: #000;
     opacity: .7;
   }
-  .venue__item:hover img,
-  .venue__item:focus img,
-  .venue__item .active:hover img,
-  .venue__item .active:focus img {
+  .venue__item:hover > img,
+  .venue__item:focus > img,
+  .venue__item .active:hover > img,
+  .venue__item .active:focus >img {
     color: #f44336;
   }
 

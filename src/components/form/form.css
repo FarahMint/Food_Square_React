@@ -41,7 +41,7 @@
   input:focus{
     font-size: 1.25rem;
     border-bottom: 2px solid;
-    border-bottom-color: rgb(13, 187, 199);
+    border-bottom-color: #f44336;
   }
 
 
