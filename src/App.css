@@ -16,7 +16,7 @@ main #map{
 }
 
 .gm-style .gm-style.gm-style-iw {
-  /* width: 500px; */
+ 
   overflow: hidden;
   max-width: 650px!important;
   white-space: space normal; 
@@ -25,7 +25,7 @@ line-height:normal;
 
 
 .info_box {
-  /* color: rgb(13, 187, 199); */
+ 
   color: #333;
   text-align: center;
 
@@ -34,7 +34,7 @@ line-height:normal;
   order: 1;
 }
 .icon-w {
-  background-color: rgb(63, 13, 199);
+  background-color: #f44336
 }
 
 /*  DISPLAY MAP */

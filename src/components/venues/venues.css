@@ -31,7 +31,7 @@
     font-size: 1rem;
     margin-top: .95rem;
     box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
-    background-color: rgb(63, 13, 199);
+    background-color: #f44336;
     color: #fefefe;
     display: flex;
     justify-content: space-between;
@@ -43,8 +43,14 @@
   .venue__item:focus,
   .venue__item .active:hover,
   .venue__item .active:focus  {
-    background-color: rgb(13, 187, 199);
-    border: 2px solid rgb(13, 187, 199);
+    background-color: #000;
+    opacity: .7;
+  }
+  .venue__item:hover img,
+  .venue__item:focus img,
+  .venue__item .active:hover img,
+  .venue__item .active:focus img {
+    color: #f44336;
   }
 
  
@@ -52,7 +58,7 @@
  .not__found{
    text-align: center;
    color:#fefefe;
-   background-color: rgba(63, 13, 199, .6);
+   background-color: #f44336;
    padding: 1rem 0;
    line-height: 2;
  }
