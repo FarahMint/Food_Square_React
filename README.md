@@ -1,51 +1,20 @@
 
-This project is currently hosted  with [Netlify](https://food-square.netlify.com/). still working on
+# Foodyed
+A restaurant recommendations web app built with React.js that fetches data from Food Square API with search and filtering functionalities, as well as location displays via Google Maps API. 
 
-##Foodyed project 
+## 🧐 Web stack:
+React.js
+Google map API 
 
-Restaurant recommendation with filtering and search feature as well as location.
-
-Build with:
-
- 	1.	React.js,  
-	2.	Food Square API 
-	3.	Google Map Api
-
-
- ## 🧐 What's inside?
- A quick look at the top-level files and directories you'll see in my React project.
-
-FOLDER STRUCTURE
-( ROOT )
-
---- index.tsx
-
---- index.js
---- app.js
----utils.js  # helper functions to load the script tag for the map,  fetch dtata from the               FoodSquare API and  get images
-
-    --- components
-
-        --- footer
-            ---Footer.js
-        --- form
-            ---Form.js
-        --- map
-            ---Map.js
-        --- navbar
-             ---Navbar.js
-        --- Sidebar
-            ---Sidebar.js
-            ---SidebarButton.js
-        --- venues
-            ---Venues.js
-           
+## 🧐 What can a user do?
+A user of 'Foodyed' can do the following:
+Browse all the restaurants in the city.
+View the recipe location on the map.
+Lookup a restaurant using text-based search.
+         
 
  ## 💫 Deployed
-
-[![Deployed with Netlify]]
-
-[deployment](https://food-square.netlify.com/)  
+ This project is currently hosted  with [Netlify](https://food-square.netlify.com/). still working on
 
  
 #print screen
